@@ -1,3 +1,6 @@
+from utils import first
+
+
 def is_empty_file(
     file_path: str,
     ignore_whitespaces=False,
@@ -60,10 +63,6 @@ def remove_line_comment(
     line_comment_char: str
 ):
     return first(line.split(line_comment_char))
-
-
-def first(iterable):
-    return next(iter(iterable))
 
 
 def remove_block_comments(
