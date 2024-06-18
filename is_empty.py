@@ -46,7 +46,17 @@ def remove_line_comments(
     text: str,
     line_comment_char: str
 ):
-    raise NotImplementedError
+    new_text = []
+
+    for line in text.split('\n'):
+        new_line = first(line.split(line_comment_char))
+        new_text.append(new_line)
+
+    return '\n'.join(new_text)
+
+
+def first(iterable):
+    return next(iter(iterable))
 
 
 def remove_block_comments(
