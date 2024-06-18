@@ -1,5 +1,5 @@
-from line_comments import remove_line_comments
-from block_comments import remove_block_comments
+from comments import remove_line_comments
+from comments import remove_block_comments
 
 
 def is_empty_file(
