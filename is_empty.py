@@ -1,7 +1,8 @@
 def is_empty_file(
     file_path: str,
     ignore_whitespaces=False,
-    ignore_comments=False,
+    ignore_line_comments=False,
+    ignore_block_comments=False,
     line_comment_char='//',
     block_comment_start_char='/*',
     block_comment_end_char='*/',
@@ -12,7 +13,8 @@ def is_empty_file(
         return is_empty_text(
             text=file.read(),
             ignore_whitespaces=ignore_whitespaces,
-            ignore_comments=ignore_comments,
+            ignore_line_comments=ignore_line_comments,
+            ignore_block_comments=ignore_block_comments,
             line_comment_char=line_comment_char,
             block_comment_start_char=block_comment_start_char,
             block_comment_end_char=block_comment_end_char
@@ -22,9 +24,34 @@ def is_empty_file(
 def is_empty_text(
     text: str,
     ignore_whitespaces=False,
-    ignore_comments=False,
+    ignore_line_comments=False,
+    ignore_block_comments=False,
     line_comment_char='//',
     block_comment_start_char='/*',
     block_comment_end_char='*/'
+):
+    if ignore_line_comments:
+        text = remove_line_comments(text, line_comment_char)
+
+    if ignore_block_comments:
+        text = remove_block_comments(text, block_comment_start_char, block_comment_end_char)
+
+    if ignore_whitespaces:
+        return text.isspace()
+
+    return text == ''
+
+
+def remove_line_comments(
+    text: str,
+    line_comment_char: str
+):
+    raise NotImplementedError
+
+
+def remove_block_comments(
+    text: str,
+    block_comment_start_char: str,
+    block_comment_end_char: str
 ):
     raise NotImplementedError
