@@ -1,4 +1,5 @@
 from line_comments import remove_line_comments
+from block_comments import remove_block_comments
 
 
 def is_empty_file(
@@ -43,11 +44,3 @@ def is_empty_text(
         return text.isspace()
 
     return text == ''
-
-
-def remove_block_comments(
-    text: str,
-    block_comment_start_char: str,
-    block_comment_end_char: str
-):
-    raise NotImplementedError
