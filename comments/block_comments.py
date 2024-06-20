@@ -5,12 +5,16 @@ def remove_block_comments(
 ):
     depth = 0
     new_text = []
-    for char in text:
 
-        if char == block_comment_start_char:
+    n = len(block_comment_start_char)
+    m = len(block_comment_end_char)
+
+    for index, char in enumerate(text):
+
+        if text[index:index + n] == block_comment_start_char:
             depth += 1
 
-        if char == block_comment_end_char:
+        if text[index - m:index] == block_comment_end_char:
             if depth > 0:
                 depth -= 1
 
