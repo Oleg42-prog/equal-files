@@ -1,0 +1,35 @@
+#
+#comment
+text
+text#
+text#comment
+text#comment#
+text#comment1#comment2
+text#comment1#comment2#comment3
+some say
+some say #
+some say #comment
+some say #comment#
+some say #comment1#comment2
+some say #comment1#comment2#comment3
+
+
+
+some say
+some say 
+some say 
+some say 
+some say 
+some say 
+
+//
+// my super !@#$% /\ \/ 24 comment
+some say
+some say //
+rsome say // my super !@#$%
+rsome say // my super !@#$%
+rsome say // my super !@#$%
+rsome say // my super !@#$%
+abc#def
+abc#def
+abc#def

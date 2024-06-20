@@ -1,0 +1,35 @@
+#
+#comment
+text
+text#
+text#comment
+text#comment#
+text#comment1#comment2
+text#comment1#comment2#comment3
+some say
+some say #
+some say #comment
+some say #comment#
+some say #comment1#comment2
+some say #comment1#comment2#comment3
+
+;
+;my ultra comment
+some say
+some say ;
+some say ;my ultra comment
+some say ;my ultra comment ;
+some say ;my ultra comment 1;my ultra comment 2
+some say ;my ultra comment 1;my ultra comment 2;my ultra comment 3
+
+
+
+some say
+some say 
+rsome say 
+rsome say 
+rsome say 
+rsome say 
+abc#def;hij
+abc#def;hij
+abc#def;hij
