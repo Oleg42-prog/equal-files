@@ -5,21 +5,21 @@ from utils import read_file
 
 @pytest.mark.parametrize('input_file_path, line_comment_char, expected_file_path', [
     (
-        'tests/mock_files/input/comments_file.txt',
+        'tests/mock_files/input/line_comments_file.txt',
         '#',
-        'tests/mock_files/expected/comments_file_hash_sign.txt'
+        'tests/mock_files/expected/line_comments_file_hash_sign.txt'
     ),
 
     (
-        'tests/mock_files/input/comments_file.txt',
+        'tests/mock_files/input/line_comments_file.txt',
         '//',
-        'tests/mock_files/expected/comments_file_two_slashes.txt'
+        'tests/mock_files/expected/line_comments_file_two_slashes.txt'
     ),
 
     (
-        'tests/mock_files/input/comments_file.txt',
+        'tests/mock_files/input/line_comments_file.txt',
         ';',
-        'tests/mock_files/expected/comments_file_semicolon.txt'
+        'tests/mock_files/expected/line_comments_file_semicolon.txt'
     )
 ])
 def test_remove_line_comments(
