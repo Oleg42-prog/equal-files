@@ -1,0 +1,35 @@
+
+
+text
+text
+text
+text
+text
+text
+some say
+some say 
+some say 
+some say 
+some say 
+some say 
+
+;
+;my ultra comment
+some say
+some say ;
+some say ;my ultra comment
+some say ;my ultra comment ;
+some say ;my ultra comment 1;my ultra comment 2
+some say ;my ultra comment 1;my ultra comment 2;my ultra comment 3
+
+//
+// my super !@
+some say
+some say //
+rsome say // my super !@
+rsome say // my super !@
+rsome say // my super !@
+rsome say // my super !@
+abc
+abc
+abc

@@ -1,0 +1,35 @@
+#
+#comment
+text
+text#
+text#comment
+text#comment#
+text#comment1#comment2
+text#comment1#comment2#comment3
+some say
+some say #
+some say #comment
+some say #comment#
+some say #comment1#comment2
+some say #comment1#comment2#comment3
+
+;
+;my ultra comment
+some say
+some say ;
+some say ;my ultra comment
+some say ;my ultra comment ;
+some say ;my ultra comment 1;my ultra comment 2
+some say ;my ultra comment 1;my ultra comment 2;my ultra comment 3
+
+//
+// my super !@#$% /\ \/ 24 comment
+some say
+some say //
+rsome say // my super !@#$%; /\ \/ 24 com
+rsome say // my super !@#$%; /\ \/ 24 com //
+rsome say // my super !@#$%; /\ \/ 24 com 1// my super !@#$% /\ \/ 24 comm 2
+rsome say // my super !@#$%; /\ \/ 24 com 1// my super !@#$% /\ \/ 24 comm 2// !@#$% /\ \/ 24 comm 3
+abc#def;hij//klm
+abc#def;hij//klm
+abc#def;hij//klm
