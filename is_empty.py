@@ -1,49 +1,48 @@
 import os
 import argparse
+from dataclasses import dataclass
 from send2trash import send2trash
 from comments import remove_line_comments
 from comments import remove_block_comments
 
 
+@dataclass
+class EmptyOptions:
+
+    ignore_whitespaces: bool = False
+
+    ignore_line_comments: bool = False
+    line_comment_char: str = '//'
+
+    ignore_block_comments: bool = False
+    block_comment_start_char: str = '/*'
+    block_comment_end_char: str = '*/'
+
+
 def is_empty_file(
     file_path: str,
-    ignore_whitespaces=False,
-    ignore_line_comments=False,
-    ignore_block_comments=False,
-    line_comment_char='//',
-    block_comment_start_char='/*',
-    block_comment_end_char='*/',
+    options: EmptyOptions,
     encoding='utf-8',
     **kwargs
 ):
     with open(file_path, 'r', encoding=encoding, **kwargs) as file:
         return is_empty_text(
             text=file.read(),
-            ignore_whitespaces=ignore_whitespaces,
-            ignore_line_comments=ignore_line_comments,
-            ignore_block_comments=ignore_block_comments,
-            line_comment_char=line_comment_char,
-            block_comment_start_char=block_comment_start_char,
-            block_comment_end_char=block_comment_end_char
+            options=options
         )
 
 
 def is_empty_text(
     text: str,
-    ignore_whitespaces=False,
-    ignore_line_comments=False,
-    ignore_block_comments=False,
-    line_comment_char='//',
-    block_comment_start_char='/*',
-    block_comment_end_char='*/'
+    options: EmptyOptions
 ):
-    if ignore_line_comments:
-        text = remove_line_comments(text, line_comment_char)
+    if options.ignore_line_comments:
+        text = remove_line_comments(text, options.line_comment_char)
 
-    if ignore_block_comments:
-        text = remove_block_comments(text, block_comment_start_char, block_comment_end_char)
+    if options.ignore_block_comments:
+        text = remove_block_comments(text, options.block_comment_start_char, options.block_comment_end_char)
 
-    if ignore_whitespaces:
+    if options.ignore_whitespaces:
         return text.isspace()
 
     return text == ''
@@ -76,7 +75,7 @@ if __name__ == '__main__':
 
     problem_files: list[str] = []
     extensions = tuple(args.extensions)
-
+    empty_options = EmptyOptions(**vars(args))
     for root, _, files in os.walk(args.input_folder):
 
         for file_name in files:
@@ -90,12 +89,7 @@ if __name__ == '__main__':
             try:
                 if is_empty_file(
                     file_path=full_file_path,
-                    ignore_whitespaces=args.ignore_whitespaces,
-                    ignore_line_comments=args.ignore_line_comments,
-                    ignore_block_comments=args.ignore_block_comments,
-                    line_comment_char=args.line_comment_char,
-                    block_comment_start_char=args.block_comment_start_char,
-                    block_comment_end_char=args.block_comment_end_char,
+                    options=empty_options,
                     encoding=args.encoding,
                     errors=args.errors
                 ):
