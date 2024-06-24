@@ -1,27 +1,14 @@
 import os
 import argparse
-from dataclasses import dataclass
 from send2trash import send2trash
 from comments import remove_line_comments
 from comments import remove_block_comments
-
-
-@dataclass
-class EmptyOptions:
-
-    ignore_whitespaces: bool = False
-
-    ignore_line_comments: bool = False
-    line_comment_char: str = '//'
-
-    ignore_block_comments: bool = False
-    block_comment_start_char: str = '/*'
-    block_comment_end_char: str = '*/'
+from options import CodeComparsionOptions
 
 
 def is_empty_file(
     file_path: str,
-    options: EmptyOptions,
+    options: CodeComparsionOptions,
     encoding='utf-8',
     **kwargs
 ):
@@ -34,7 +21,7 @@ def is_empty_file(
 
 def is_empty_text(
     text: str,
-    options: EmptyOptions
+    options: CodeComparsionOptions
 ):
     if options.ignore_line_comments:
         text = remove_line_comments(text, options.line_comment_char)
@@ -75,7 +62,7 @@ if __name__ == '__main__':
 
     problem_files: list[str] = []
     extensions = tuple(args.extensions)
-    empty_options = EmptyOptions(**vars(args))
+    code_options = CodeComparsionOptions(**vars(args))
     for root, _, files in os.walk(args.input_folder):
 
         for file_name in files:
@@ -89,7 +76,7 @@ if __name__ == '__main__':
             try:
                 if is_empty_file(
                     file_path=full_file_path,
-                    options=empty_options,
+                    options=code_options,
                     encoding=args.encoding,
                     errors=args.errors
                 ):
