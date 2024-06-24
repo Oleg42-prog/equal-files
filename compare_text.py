@@ -1,7 +1,7 @@
 import argparse
 from options import CodeComparsionOptions
 from comments import remove_line_comments, remove_block_comments
-from utils import read_file
+from utils import read_file, walk_file_paths
 
 
 def compare_text_files(
@@ -67,3 +67,6 @@ if __name__ == '__main__':
         block_comment_start_char=args.block_comment_start_char,
         block_comment_end_char=args.block_comment_end_char
     )
+
+    basis_file_paths = list(walk_file_paths(args.basis_folder))
+    relative_file_paths = list(walk_file_paths(args.relative_folder))
