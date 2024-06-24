@@ -1,4 +1,7 @@
-def first(iterable):
+from typing import Iterable
+
+
+def first(iterable: Iterable):
     return next(iter(iterable))
 
 
