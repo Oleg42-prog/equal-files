@@ -27,3 +27,20 @@ def filter_by_extensions(file_names: Iterable, extensions: Iterable):
     for file_name in file_names:
         if file_name.endswith(tuple_extensions):
             yield file_name
+
+
+def upper_triangular_matrix(
+    rows: Iterable,
+    columns: Iterable,
+    diagonal: bool = True
+):
+    rows = list(rows)
+    columns = list(columns)
+
+    n = len(rows)
+    m = len(columns)
+
+    for i in range(n):
+        for j in range(m):
+            if i < j or (i == j and diagonal):
+                yield rows[i], columns[j]
