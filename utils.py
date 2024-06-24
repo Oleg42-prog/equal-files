@@ -20,3 +20,10 @@ def walk_file_paths(folder_path: str):
     for root, _, files in os.walk(folder_path):
         for file_name in files:
             yield os.path.join(root, file_name)
+
+
+def filter_by_extensions(file_names: Iterable, extensions: Iterable):
+    tuple_extensions = tuple(extensions)
+    for file_name in file_names:
+        if file_name.endswith(tuple_extensions):
+            yield file_name
