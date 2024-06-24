@@ -44,3 +44,21 @@ def upper_triangular_matrix(
         for j in range(m):
             if i < j or (i == j and diagonal):
                 yield rows[i], columns[j]
+
+
+def triangular_matrix(
+    iterable_1: Iterable,
+    iterable_2: Iterable,
+    diagonal: bool = True
+):
+    list_1 = list(iterable_1)
+    list_2 = list(iterable_2)
+
+    n = len(list_1)
+    m = len(list_2)
+
+    if n > m:
+        for item_1, item_2 in upper_triangular_matrix(list_2, list_1, diagonal):
+            yield item_2, item_1
+    else:
+        yield from upper_triangular_matrix(list_1, list_2, diagonal)
