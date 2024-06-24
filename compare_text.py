@@ -1,7 +1,8 @@
+import os
 import argparse
 from options import CodeComparsionOptions
 from comments import remove_line_comments, remove_block_comments
-from utils import read_file, walk_file_paths, filter_by_extensions
+from utils import read_file, walk_file_paths, filter_by_extensions, triangular_matrix
 
 
 def compare_text_files(
@@ -73,3 +74,36 @@ if __name__ == '__main__':
 
     basis_file_paths = filter_by_extensions(basis_file_paths, extensions)
     relative_file_paths = filter_by_extensions(relative_file_paths, extensions)
+
+    for basis_file, relative_file in triangular_matrix(basis_file_paths, relative_file_paths):
+
+        basis_file_output_form = basis_file.replace(args.basis_folder, '')
+        relative_file_output_form = relative_file.replace(args.relative_folder, '')
+
+        basis_file_name = os.path.basename(basis_file)
+        relative_file_name = os.path.basename(relative_file)
+
+        if args.compare_by_name and basis_file_name != relative_file_name:
+            continue
+
+        try:
+
+            if compare_text_files(
+                file_path_1=basis_file,
+                file_path_2=relative_file,
+                options=code_options,
+                encoding=args.encoding,
+                errors=args.errors
+            ):
+                if not args.show_diff:
+                    print(f'{basis_file_output_form} == {relative_file_output_form}')
+            else:
+                if args.show_diff:
+                    print(f'{basis_file_output_form} != {relative_file_output_form}')
+
+        except UnicodeDecodeError as e:
+            print('UnicodeDecodeError:')
+            print('basis_file:', basis_file)
+            print('relative_file:', relative_file)
+            print('error:', e)
+            print()
